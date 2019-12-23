@@ -1,9 +1,10 @@
 
 checker/
 
-Index-linux
-Index-macos
-Index-win.exe
+index-linux
+index-macos
+index-win.exe
+index.exe
 
 *.bat
 
