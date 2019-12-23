@@ -3,9 +3,15 @@ Checks for validity of image source references in a html files which use the `<i
 
 Does ***NOT*** work with dynamically referenced image links and those contained within any other markup than a simple html `<img>` tag.
 
+Download for:
+  - [*Windows (x64)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/win64.zip)
+  - [*Windows (x86)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/win32.zip)
+  - [*macOS*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/macos.zip)
+  - [*Linux*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/linux.zip)
+
 ##### The base file arrangement:
 
-Run Index-win (or `Index-linux` / `Index-macos`) from here after placing your files in `/checker`.
+Run `index-win.exe` (or `index-linux` / `index-macos`) from here after placing your files in `/checker`.
 
 ![iC-01](https://imgur.com/ci8QIlJ.png)
 
