@@ -36,7 +36,19 @@ inquirer
 
       source = fs.readFileSync(path.join(project_folder, '/checker/', sourceFileName), 'utf8');
 
-      let imgRegex = /(?:(?:\&lt\;)|(?:\<))img src\=(?:(?:\&quot\;)|(?:\"))([0-9a-zA-Z\\\/\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+)(?:(?:\&quot\;)|(?:\"))/gi;
+      /*
+        <img src="djaksd.webm">
+        url(lol.jpg)
+        [img[a32edc/asdje\ade.mp4]]
+        [img[hom e.svg]]
+        [img[home.webp][Home]]
+        [img[home.jpeg][Home][$done to true]]
+        [img[Go home|home.jpg]]
+        [img[Go home|home.png][Home]]
+        [img[Go home|home.gif][Home][$done to true]]
+      */
+
+      let imgRegex = /(?:(?:\-\>)|(?:\|)|(?:\")|(?:\[)|(?:\()|(?:\&quot\;))([0-9a-zA-Z\\\/\^\&\'\@\{\}\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+?\.(?:(?:png)|(?:jpg)|(?:jpeg)|(?:gif)|(?:svg)|(?:webp)|(?:webm)|(?:mp4)))(?:(?:\<\-)|(?:\")|(?:\])|(?:\))|(?:\&quot\;))/gi;
 
       let imgSources = [...source.matchAll(imgRegex)];
 
@@ -62,7 +74,11 @@ inquirer
       }
 
       found = found.filter(unique);
-      missing = missing.filter(unique);
+      missing = missing.filter(unique).sort(function(a, b){
+        return b.length - a.length;
+      });
+
+      let falsePositives = [];
 
       console.log(`\n   Reference(s) found  : ${found.length + missing.length}`);
       console.log(`   Working sources     : ${found.length}`);
@@ -71,10 +87,24 @@ inquirer
       if (missing.length !== 0) {
         console.log(`   =======================================`);
         console.log(`   The following source(s) is/are missing:`);
-        console.log(`   =======================================`);
+        console.log(`   =======================================\n`);
 
         for (let m = 0; m < missing.length; m++) {
-          console.log(`   \x1b[31m\x1b[1m"${missing[m]}"\x1b[0m`);
+          if (!missing[m].includes("/")) {
+            falsePositives = [...falsePositives, missing[m]];
+          } else {
+            console.log(`   \x1b[31m\x1b[1m"${missing[m]}"\x1b[0m`);
+          }
+        }
+      }
+
+      if (falsePositives.length !== 0) {
+        console.log(`\n   ======================`);
+        console.log(`   Possible false alarms:`);
+        console.log(`   ======================\n`);
+
+        for (let p = 0; p < falsePositives.length; p++) {
+          console.log(`   \x1b[33m\x1b[1m"${falsePositives[p]}"\x1b[0m`);
         }
       }
     }

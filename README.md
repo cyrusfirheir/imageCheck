@@ -1,13 +1,15 @@
 # imageCheck
-Checks for validity of image source references in a html files which use the `<img src="./path/to/image">` tag explicitly in the markup.
+Checks for validity of image source references in html files.
 
-Does ***NOT*** work with dynamically referenced image links and those contained within any other markup than a simple html `<img>` tag.
+Does ***NOT*** work with dynamically referenced image links (which use variables to insert the filename).
+
+Is based on file extensions, so can return false alarms. But it will not miss *any* mention of these following extensions: `.png` `.jpg` `.jpeg` `.gif` `.svg` `.webp` `.webm` `.mp4`
 
 Download for:
-  - [*Windows (x64)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/win64.zip)
-  - [*Windows (x86)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/win32.zip)
-  - [*macOS*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/macos.zip)
-  - [*Linux*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.0/linux.zip)
+  - [*Windows (x64)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.1/win64.zip)
+  - [*Windows (x86)*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.1/win32.zip)
+  - [*macOS*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.1/macos.zip)
+  - [*Linux*](https://github.com/cyrusfirheir/imageCheck/releases/download/v0.1.1/linux.zip)
 
 ##### The base file arrangement:
 
