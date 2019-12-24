@@ -26,7 +26,7 @@ Press <kbd>⏎</kbd> to use default name (index.html).
 
 ![iC-03](https://imgur.com/O5cGkz5.png)
 
-##### When every `<img src"path/to/image" />` is working fine:
+##### When every source is working fine:
 ![iC-04](https://imgur.com/A565bas.png)
 
 ##### When something's missing:
